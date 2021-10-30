@@ -1,24 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Avatar, Button, Chip } from '@mui/material';
+import { Avatar, Chip } from '@mui/material';
 import Link from 'next/link';
 
 const useStyles = makeStyles({
@@ -46,7 +34,6 @@ const useStyles = makeStyles({
       }
 })
   
-
 function DrawerSide(props) {
     const classes = useStyles()  
     
@@ -104,32 +91,6 @@ function DrawerSide(props) {
               <Divider />
             </Drawer>
           </span>
-          {/* <span>
-            <Button
-              ref={allbirdsRef}
-              onClick={() => {
-                prevRef.current.style.backgroundColor = "inherit";
-                history.push("/");
-                allbirdsRef.current.style.backgroundColor = "yellow";
-                prevRef.current = allbirdsRef.current;
-              }}
-            >
-              <code> allbirds </code>
-            </Button>
-          </span> */}
-  
-          {/* <span style={{ marginRight: "19px" }}>
-            <IconButton aria-label="cart" className={classes.badge}>
-              <Badge badgeContent={netQuantity} color="secondary">
-                <ShoppingCartIcon
-                  onClick={() => {
-                    setCartOn(true);
-                  }}
-                />
-                {cartOn ? <CartInfo setCartOn={setCartOn} /> : null}
-              </Badge>
-            </IconButton>
-          </span> */}
         </div>
       </div>
     )

@@ -26,9 +26,9 @@ function Nav() {
     if(mobile){
     return (
           <>
-          <div className={styles.nav1}  data-aos="fade-down" data-aos-easing="ease-in">
+          <div className={styles.nav1} >
               <div className={styles.calltext}>
-                  <Chip icon={<Avatar><FaPhoneAlt/></Avatar>} style={{color:"white"}} label="+92 313 5070127" clickable/> 
+                  <Chip icon={<Avatar><FaPhoneAlt/></Avatar>} style={{color:"#f7991c"}} label="+92 313 5070127" clickable/> 
               </div>
               <div style={{ alignSelf:"center"}}>
                   <Link href="/">
@@ -38,7 +38,7 @@ function Nav() {
                   </Link>
                 </div>
                 <div className={styles.calltext}>
-                    <Link href="Forms">Sign in / Register</Link>
+                <Link href="Forms"><a> <Chip icon={<Avatar><FaUser/></Avatar>} ></Chip> </a></Link>
                 </div>
           </div>
         <div className={styles.nav}>
