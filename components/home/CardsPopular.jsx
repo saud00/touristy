@@ -5,25 +5,24 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function Cards(props) {
+
+export default function CardsPopular(props) {
   console.log(props.heading)
   return (
-    <Card sx={{ width: 345 }}>
+    <Card sx={{ minWidth:250, minHeight:250, maxWidth:345, maxHeight:345, mb:5}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="345"
           image={props.src}
           alt={props.alt}
+          sx={{zIndex:-2}}
         />
-        <CardContent>
+        <span sx={{zIndex:4}}>
           <Typography sx={{textTransform:'uppercase'}} gutterBottom variant="h6" component="div">
             {props.heading}
           </Typography>
-          <Typography sx={{textTransform:"capitalize"}} variant="body2" color="text.secondary">
-            {props.para}
-          </Typography>
-        </CardContent>
+        </span>
       </CardActionArea>
     </Card>
   );
