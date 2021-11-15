@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import '@natscale/react-calendar/dist/main.css';
+import Footer from '../components/Footer';
 
   function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -19,6 +20,7 @@ import '@natscale/react-calendar/dist/main.css';
     <>
     <Nav/>
     <Component {...pageProps} />
+    <Footer/>
     </>
   ) 
 }

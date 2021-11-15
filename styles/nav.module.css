@@ -57,3 +57,16 @@
     font-weight: 550;
     font-size: smaller;
 }
+
+
+/*Footer*/
+.contact{
+
+    display:flex; height:5vh; width:100%;  justify-content:space-evenly; 
+}
+.contact a{
+    color:grey
+}
+.contact a:hover{
+    color:white
+}

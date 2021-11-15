@@ -14,32 +14,32 @@ const cardDetails=[
     {
     src:"./img/home/1-Popular.jpeg",
     alt:"1",
-    heading:"member benifits",
+    heading:"easter escape",
 },
     {
     src:"./img/home/2-Popular.jpeg",
     alt:"2",
-    heading:"Hotel lovers unite",
+    heading:"Hotest hotels in nsw",
 },
     {
     src:"./img/home/3-Popular.webp",
     alt:"3",
-    heading:"flexiale cancelations",
+    heading:"hip hideout in australia",
 },
     {
     src:"./img/home/4-Popular.jpeg",
     alt:"3",
-    heading:"flexiale cancelations",
+    heading:"where to stay in singapore",
 },
     {
     src:"./img/home/5-Popular.jpeg",
     alt:"3",
-    heading:"flexiale cancelations",
+    heading:"next-level stays in newzeland",
 },
     {
     src:"./img/home/6-Popular.jpeg",
     alt:"3",
-    heading:"flexiale cancelations",
+    heading:"all-star australasia",
 },
 ]
 

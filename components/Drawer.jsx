@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     },
     a:{
           fontFamily:"Helvetica-Neue",
-          textDecoration:"upperCase",
+          textTransform:"upperCase",
           fontWeight:"bold",
           fontSize:"35px",
 
