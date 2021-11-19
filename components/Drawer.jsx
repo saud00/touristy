@@ -72,11 +72,11 @@ function DrawerSide(props) {
               </ListItem>
               <Divider />
               <ListItem className={classes.a}>
-                  <Link href="/hotels" ><a>Honeymoon</a></Link>
+                  <Link href="/Hotels" ><a>Honeymoon</a></Link>
               </ListItem>
               <Divider />
               <ListItem className={classes.a}>
-                  <Link href="/hotels" ><a>Hotel</a></Link>
+                  <Link href="/Hotels" ><a>Hotel</a></Link>
               </ListItem>
               <Divider />
               <ListItem className={classes.a}>

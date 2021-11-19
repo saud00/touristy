@@ -5,6 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import '@natscale/react-calendar/dist/main.css';
 import Footer from '../components/Footer';
+import { Provider } from 'react-redux';
+import store from '../components/store/index'
 
   function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -17,11 +19,11 @@ import Footer from '../components/Footer';
   }, []);
   // AOS.init()
   return(
-    <>
+    <Provider store={store}>
     <Nav/>
     <Component {...pageProps} />
     <Footer/>
-    </>
+    </Provider>
   ) 
 }
 

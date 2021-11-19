@@ -11,7 +11,7 @@ import PopularSearches from '../components/home/PopularSearches';
 const styled = makeStyles({
   hero:{
     marginBottom:"1vh",
-    height:'35vh',alignItems:"center", display:"flex", justifyItems:"center"
+    height:'35vh',alignItems:"center", display:"flex", justifyItems:"center", overflow:"hidden"
   }, img:{
     backgroundImage: `linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.7))`,
     height:"1440", width:"400",zIndex:-1, 
@@ -26,14 +26,14 @@ const styled = makeStyles({
     maxWidth:"100%", maxHeight:"100%", zIndex:"-1"
   },
   cards:{
-    height:"30vh", width:"100%", 
+     width:"100%", 
   },
   popular:{
     marginTop:"4vh"
   }
 })
 
-const heading = {textAlign:"center", fontFamily:"Helvetica", fontSize:"1.25rem",zIndex:"4",fontWeight:"500",maxWidth:"80%", color:"black" , mx:"auto", letterSpacing:"1px"
+const heading = {textAlign:"center", fontFamily:"Helvetica", fontSize:"1.25rem",zIndex:"4",fontWeight:"500",maxWidth:"80%", color:"black" , mx:"auto", letterSpacing:"1px", transform:'scale(1.3,1)'
 }
 
 export default function Home() {
@@ -51,7 +51,7 @@ export default function Home() {
 
       <div id="carousal" className={classes.hero}>
        <Box className={classes.img}>
-       {/* <Image width={100} height={100} layout="fill" alt="nothing" src="/img/h-11.jpg" /> */}
+       <Image width={100} height={100} layout="fill" alt="nothing" src="/img/h-11.jpg" priority />
        {/* <img src="/img/h-11.jpg" className={classes.fit} alt="img" /> */}
        </Box>
        <Typography sx={{...heading}}> Helping you find and book the world’s best boutique and luxury hotels </Typography>
@@ -67,19 +67,17 @@ export default function Home() {
       {//cards
       }
 
-      <div className={classes.cards} >
+      <div className={classes.cards} data-aos="fade-up" data-aos-duration="3000" >
         <CardsSrc/>
       </div>
 
       {//Popular Searched
       }
 
-      <div className={classes.popular} >
+      <div className={classes.popular} data-aos="fade-up" data-aos-duration="3000">
         <PopularSearches/>
       </div>
 
     </div>
   )
 }
-//, url(${'img/h-11.jpg'}) no-repeat
-// color:"#f7991c"

@@ -51,7 +51,7 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                    <Link href="/hotels">Hotels</Link>
+                    <Link href="/Hotels">Hotels</Link>
                 </li>
                 <li>
                     <Link href="/villas" >Villas</Link>
