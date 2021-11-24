@@ -1,124 +1,120 @@
 const initialState = {
-    venue:[
+    venues : [
+
         {
             id: 1,
+            location:"Istanbul, Turkey",
             category: "Men wear",
             size: "8",
             color: "green",
             name: "Tree Dasher",
-            image: "rings",
+            image: "id1",
             quality: "Daily Running Shoe",
             price: 60,
-            discount: 60 - (2 / 100) * 60,
+            discount:function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 10,
           },
           {
             id: 2,
+            location:"Istanbul, Turkey",
             category: "Women wear",
             size: "9",
             color: "grey",
             name: "bag",
-            image: "bag1",
+            image: "id2",
             quality: "Light and Breezy Sneaker",
             price: 80,
-            discount: 80 - (2 / 100) * 80,
+            discount: function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 5,
           },
           {
             id: 3,
+            location:"Istanbul, Turkey",
             category: "Men shoes",
             size: "8",
             color: "grey",
             name: "Wool Runner ",
-            image: "shoes",
+            image: "id3",
             quality: "Cozy Sneaker",
             price: 400,
-            discount: 400 - (2 / 100) * 400,
+            discount: function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 6,
           },
           {
             id: 4,
+            location:"Istanbul, Turkey",
             category: "Women wear",
             size: "8",
             color: "red",
             name: "black dotted",
-            image: "hijab",
+            image: "id4",
             quality: "Daily Running Shoe",
             price: 350,
-            discount: 350 - (2 / 100) * 350,
+            discount: function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 4,
           },
           {
             id: 5,
+            location:"Istanbul, Turkey",
             category: "Men wear",
             size: "6",
             color: "green",
             name: "Wool Hoodie",
-            image: "watch",
+            image: "id5",
             quality: "Light and Breezy Sneaker",
             price: 100,
-            discount: 100 - (2 / 100) * 100,
+            discount: function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 1,
           },
           {
             id: 6,
+            location:"Istanbul, Turkey",
             category: "women shoes",
             size: "9",
             color: "blue",
             name: "Wool Cardi - Long",
-            image: "white",
+            image: "id6",
             quality: "Cozy Sneaker",
             price: 90,
-            discount: 90 - (2 / 100) * 90,
+            discount: function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 4,
           },
           {
             id: 7,
+            location:"Istanbul, Turkey",
             category: "Men wear",
             size: "8",
             color: "pink",
             name: "Trino™ Boxer Brief",
-            image: "rings",
+            image: "id7",
             quality: "Daily Running Shoe",
             price: 4000,
-            discount: 4000 - (2 / 100) * 4000,
+            discount: function(){
+                return this.price - (2 / 100) * this.price
+            },
             disVal: 2,
             quantity: 6,
           },
-          {
-            id: 8,
-            category: "Women wear",
-            size: "8",
-            color: "yellow",
-            name: "wool ",
-            image: "heels",
-            quality: "Light and Breezy Sneaker",
-            price: 550,
-            discount: 550 - (2 / 100) * 550,
-            disVal: 2,
-            quantity: 3,
-          },
-          {
-            id: 9,
-            category: "Men wear",
-            size: "10",
-            color: "green",
-            name: "Trino™ Brief",
-            image: "rings",
-            quality: "Cozy Sneaker",
-            price: 40,
-            discount: 40 - (2 / 100) * 40,
-            disVal: 2,
-            quantity: 1,
-          }
         // ,{
-        // id:1,
+        // id:1,     
         // name:"Palazzo Avino",
         // location:"AMALFI COAST, ITALY",
         // Price:"Price per night from £84,004.91",
@@ -127,16 +123,23 @@ const initialState = {
         // About:"Stepped gardens, several terraced areas (including one on the roof), free WiFi throughout and laundry service. In rooms: desk, flatscreen TV, iPod dock, minibar, air-conditioning, and free bottled water. Some rooms have terraces with sea views."
         // }
     ],
-    
 
-}
+};
 
-export default function HotelReducers(state = initialState, action){
+
+function HotelReducers(state = initialState, action){
     switch(action.type){
         case "INC":{
-            return {
+            const {discount, rooms}= action.payload
+            console.log(discount, rooms)
+            return{
                 ...state
             }
         }
+        default:{
+            return state
+        }
     }
 }
+
+export default HotelReducers
