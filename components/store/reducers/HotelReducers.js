@@ -1,6 +1,5 @@
 const initialState = {
     venues : [
-
         {
             id: 1,
             location:"Istanbul, Turkey",
@@ -130,7 +129,7 @@ const initialState = {
 function HotelReducers(state = initialState, action){
     switch(action.type){
         case "INC":{
-            const {discount, rooms}= action.payload
+            const {discount, rooms} = action.payload
             console.log(discount, rooms)
             return{
                 ...state

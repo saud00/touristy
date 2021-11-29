@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import Link from 'next/link'
 import { makeStyles } from '@mui/styles';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -127,10 +128,11 @@ function HotelCards({val}) {
             <div className={classes.span1} style={{width:mobile? "100%":"50%"}}>
                 <div style={{height:"100%", width:"100%"}}>
                     
-                   
-        <ImageButton focusRipple style={{width: '100%', height:"100%"}}>
-          
-          <img src={`/img/hotels/${val.image}.jpeg`} height="100%" width="100%" alt="img"/>
+          <Link href='Hotels/[id]' as={`/Hotels/${val.id}`}>
+            <ImageButton focusRipple style={{width: '100%', height:"100%"}}>
+              <a>
+                <img src={`/img/hotels/${val.image}.jpeg`} height="100%" width="100%" alt="img" />
+              </a>
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
@@ -149,6 +151,7 @@ function HotelCards({val}) {
             </Typography>
           </Image>
         </ImageButton>
+          </Link>
                 </div>
             </div>
             <div className={classes.span2} style={{width:mobile? "100%":"50%"}}>
