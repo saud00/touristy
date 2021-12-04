@@ -6,7 +6,12 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 import { Button, useMediaQuery } from '@mui/material';
 
 const styles=makeStyles({
-  
+  detailsLeft:{
+       fontSize:"14px",  
+},
+detailsRight:{
+       alignText:"flex-end"
+  },
     btns: { display: "flex", margin: "5vh 5vw", cursor: "pointer" },
     btnSpan: {
       display: "flex",
@@ -96,14 +101,28 @@ function Index() {
         <div >
             {filter.map((val,ind)=>{
                 return(
-                    <div key={ind} style={{display:mobile? "block":"flex",flexDirection:"row"}}>
+                    <div key={ind} style={{display:mobile? "block":"flex",flexDirection:"row", padding:"4rem"}}>
                         <div style={{width : mobile? "100%":"50%"}}>
                         <img src={`/img/hotels/${val.image}.jpeg`} height="100%" width="100%" alt="img" />
                         </div>
-                        <div style={{width:"50%"}}>
-                        <h2 style={{textAlign:"center"}}>
+
+                        <div style={{width:"50%", backgroundColor:"silver"}}>
+                        <h2 style={{textAlign:"center", fontFamily:"Open Sans", letterSpacing:".1px",transform:"scale(1.8, 1.4)"}}>
                             {val.name}
                         </h2>
+
+                        <div style={{justifyContent:"flex-end", display:"flex", width:"100%",}}>
+                        <div style={{width:"40%"}}>
+                            <p style={{display:"flex",justifyContent:"space-between"}}> 
+                                <span className={classes.detailsLeft}>per night: </span>  
+                                <span className={classes.detailsRight} >${val.discount()}</span> 
+                            </p>
+                            <p style={{display:"flex",justifyContent:"space-between"}}> 
+                                <span className={classes.detailsLeft}>  Free cancelation before </span>
+                                <span className={classes.detailsRight}> 24 hours</span>  </p>
+                        </div>
+                        </div>
+          
           <span className={classes.btns} style={{width : mobile? "100%":"50%"}}>
             <span>
               <span className={classes.btnSpan}>
@@ -123,7 +142,7 @@ function Index() {
 
                 <span>
                   <Button className={classes.cartBtn} onClick={AddCart}>
-                    Add to Cart
+                    Book Now
                   </Button>
                 </span>
               </span>

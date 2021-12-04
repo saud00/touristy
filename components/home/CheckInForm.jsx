@@ -9,7 +9,7 @@ import { Divider, InputBase, Paper, SvgIcon ,div, Typography} from '@mui/materia
 import { Box } from '@mui/system';
 import { IoIosArrowRoundForward } from "react-icons/io";
 import 'react-calendar/dist/Calendar.css';
-
+import Calender1 from './Calender'
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 const styles = makeStyles({
@@ -90,12 +90,13 @@ function CheckInForm() {
             <Divider sx={{height:28, m:0.5}} orientation="vertical"/>
 
             <Box  sx={{ml:3, flex:1,position:"relative", display:"flex",flexDirection:"row", alignItems:'center' }} >
-                <BsCalendarEventFill />
+                {/* <BsCalendarEventFill />
                 <Typography id="q" onClick={()=>{setOpen(true)}} sx={{ml:2, fontWeight:"100", fontSize:"small"}}>Check In</Typography>
                 {open && <Calendar id="q" value={value} onChange={onChange} returnValue="range" className={classes.calender}/>}
                 <IoIosArrowRoundForward/>
                 <Typography id="q2" onClick={()=>{setOpen2(true)}} sx={{ml:1, fontWeight:"100", fontSize:"small"}}>Check Out</Typography>
-                {open2 && <Calendar id="q2" value={value2} onChange={onChange2} returnValue="range" className={classes.calender}/>}
+                {open2 && <Calendar id="q2" value={value2} onChange={onChange2} returnValue="range" className={classes.calender}/>} */}
+                <Calender1/>
             </Box>
             <Divider sx={{height:28, m:0.5}} orientation="vertical"/>
 

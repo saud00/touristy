@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Typography, Box } from '@mui/material';
-import CheckInForm from '../components/CheckInForm';
+import CheckInForm from '../components/home/CheckInForm';
 import CardsSrc from '../components/CardsSrc';
 import PopularSearches from '../components/home/PopularSearches';
 
