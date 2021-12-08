@@ -122,19 +122,27 @@ const initialState = {
         // About:"Stepped gardens, several terraced areas (including one on the roof), free WiFi throughout and laundry service. In rooms: desk, flatscreen TV, iPod dock, minibar, air-conditioning, and free bottled water. Some rooms have terraces with sea views."
         // }
     ],
+    days : 0,
 
 };
 
 
 function HotelReducers(state = initialState, action){
     switch(action.type){
-        case "INC":{
+        case "INC":
             const {discount, rooms} = action.payload
             console.log(discount, rooms)
             return{
                 ...state
             }
-        }
+        
+        case "DAYSTAY":
+            const {days} = action.payload
+            console.log(days)
+            return{
+                ...state,
+                days: days
+            }
         default:{
             return state
         }

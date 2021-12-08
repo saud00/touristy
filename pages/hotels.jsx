@@ -60,7 +60,9 @@ function Hotels() {
             <div className={classes.cards}>
                 {venues.map((val,ind)=>{
                     return (
-                        <div key={ind}><HotelCards val={val}/></div>
+                    <div  key={ind}>
+                        { val &&  <div><HotelCards val={val}/></div> }
+                    </div>
                     )})}
             </div>
 
