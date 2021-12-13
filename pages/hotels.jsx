@@ -3,7 +3,7 @@ import {  Typography, MenuItem, Menu } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import { FiFilter ,FiChevronDown,FiChevronUp} from "react-icons/fi";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import HotelCards from '../components/HotelCards';
 
 const styles = makeStyles({
@@ -31,16 +31,47 @@ const styles = makeStyles({
 })
 
 function Hotels() {
+    const dispatch = useDispatch()
     const classes = styles()
     const [changeSort, setChangeSort] = useState(false)
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const {venues} = useSelector((state) => state.HotelReducers)
-    // console.log(venues.map((val)=>{console.log(val)}))
+    var {venues, venue} = useSelector((state) => state.HotelReducers)
+
+    const changeVenues=(e)=>{
+        const eId = e.target.id
+        switch(eId){
+            case "1": lowest()
+                break;
+            case "2": Asia()
+                    break;
+            case "3": Europe()
+                break;
+            default:
+                venues
+        }
+    }
+
+    const lowest=()=>{
+        const venue1 = venues.sort(function(a, b) {
+            return a.price - b.price;
+        });
+        dispatch({type:"LOWEST",  venue1})
+    }
+    const Asia=()=>{
+        const venue2 = venues.filter((e)=>{return e.region == "ASIA"})
+        dispatch({type:"ASIA",  venue2})
+    }
+    const Europe=()=>{
+        const venue3 = venues.filter((e)=>{return e.region == "Europe"})
+        dispatch({type:"EUROPE",  venue3})
+    }
+
     return (
         <div className= {classes.root}>
             <div>
                 <Typography align="center" variant="h3">Luxury botique Hotels</Typography>
             </div>
+
             <div className={classes.sortP}>
                 <ClickAwayListener onClickAway={()=>{setChangeSort(false)}}>
         
@@ -51,14 +82,21 @@ function Hotels() {
 
                 </ClickAwayListener>
                 <Menu open={changeSort} anchorEl={anchorEl}>
-                    <MenuItem>1</MenuItem>
-                    <MenuItem>2</MenuItem>
-                    <MenuItem>3</MenuItem>
+                    <MenuItem id="1" onClick={(e)=>{changeVenues(e)}}>Lowest Rates</MenuItem>
+                    <MenuItem id="2" onClick={(e)=>{changeVenues(e)}}>Asia</MenuItem>
+                    <MenuItem id="3" onClick={(e)=>{changeVenues(e)}}>Europe</MenuItem>
                 </Menu>
 
             </div>
+
             <div className={classes.cards}>
-                {venues.map((val,ind)=>{
+                {venue.length !== 0 && venue ? venue.map((val,ind)=>{
+                    return (
+                    <div  key={ind}>
+                        { val &&  <div><HotelCards val={val}/></div> }
+                    </div>
+                    )}):
+                venues.map((val,ind)=>{
                     return (
                     <div  key={ind}>
                         { val &&  <div><HotelCards val={val}/></div> }

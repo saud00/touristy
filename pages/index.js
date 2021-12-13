@@ -11,11 +11,10 @@ import PopularSearches from '../components/home/PopularSearches';
 const styled = makeStyles({
   hero:{
     marginBottom:"1vh",
-    height:'35vh',alignItems:"center", display:"flex", justifyItems:"center", overflow:"hidden"
+    height:'45vh',alignItems:"center", 
   }, img:{
-    backgroundImage: `linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.7))`,
-    height:"1440", width:"400",zIndex:-1, 
-   opacity:"0.5"
+    // backgroundImage: `linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.7))`,
+    width:"100vw", height:"45vh", 
   },
   checkIn:{
     maxWidth:"4/5",
@@ -23,7 +22,7 @@ const styled = makeStyles({
     border:"5px grey solid"
   },
   fit:{
-    maxWidth:"100%", maxHeight:"100%", zIndex:"-1"
+    width:"100%", height:"100%"
   },
   cards:{
      width:"100%", 
@@ -49,13 +48,13 @@ export default function Home() {
       {//hero img
       }
 
-      <div id="carousal" className={classes.hero}>
+      {/* <div  className={classes.hero}> */}
        <Box className={classes.img}>
-       <Image width={100} height={100} layout="fill" alt="nothing" src="/img/h-11.jpg" priority />
-       {/* <img src="/img/h-11.jpg" className={classes.fit} alt="img" /> */}
+       {/* <Image width={100} height={100} layout="fill" alt="nothing" src="/img/bg2.jpg" priority /> */}
+       <img src="/img/bg3.png" className={classes.fit} alt="img" />
        </Box>
-       <Typography sx={{...heading}}> Helping you find and book the world’s best boutique and luxury hotels </Typography>
-      </div>
+       {/* <Typography sx={{...heading}}> Helping you find and book the world’s best boutique and luxury hotels </Typography> */}
+      {/* </div> */}
 
       {//checkIn form
       }

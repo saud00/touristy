@@ -3,13 +3,13 @@ const initialState = {
         {
             id: 1,
             location:"Istanbul, Turkey",
-            category: "Men wear",
+            region:"Europe",
             size: "8",
             color: "green",
             name: "Tree Dasher",
             image: "id1",
             quality: "Daily Running Shoe",
-            price: 60,
+            price: 600,
             discount:function(){
                 return this.price - (2 / 100) * this.price
             },
@@ -19,7 +19,7 @@ const initialState = {
           {
             id: 2,
             location:"Istanbul, Turkey",
-            category: "Women wear",
+            region:"Europe",
             size: "9",
             color: "grey",
             name: "bag",
@@ -35,7 +35,7 @@ const initialState = {
           {
             id: 3,
             location:"Istanbul, Turkey",
-            category: "Men shoes",
+            region: "ASIA",
             size: "8",
             color: "grey",
             name: "Wool Runner ",
@@ -51,7 +51,7 @@ const initialState = {
           {
             id: 4,
             location:"Istanbul, Turkey",
-            category: "Women wear",
+            region: "ASIA",
             size: "8",
             color: "red",
             name: "black dotted",
@@ -67,7 +67,7 @@ const initialState = {
           {
             id: 5,
             location:"Istanbul, Turkey",
-            category: "Men wear",
+            region:"Europe",
             size: "6",
             color: "green",
             name: "Wool Hoodie",
@@ -83,7 +83,7 @@ const initialState = {
           {
             id: 6,
             location:"Istanbul, Turkey",
-            category: "women shoes",
+            region:"Europe",
             size: "9",
             color: "blue",
             name: "Wool Cardi - Long",
@@ -99,7 +99,7 @@ const initialState = {
           {
             id: 7,
             location:"Istanbul, Turkey",
-            category: "Men wear",
+            region:"Europe",
             size: "8",
             color: "pink",
             name: "Trino™ Boxer Brief",
@@ -123,6 +123,7 @@ const initialState = {
         // }
     ],
     days : 0,
+    venue:[]
 
 };
 
@@ -131,18 +132,36 @@ function HotelReducers(state = initialState, action){
     switch(action.type){
         case "INC":
             const {discount, rooms} = action.payload
-            console.log(discount, rooms)
             return{
                 ...state
             }
         
         case "DAYSTAY":
             const {days} = action.payload
-            console.log(days)
             return{
                 ...state,
                 days: days
             }
+            
+        case "LOWEST":
+            const {venue1} = action
+            return{
+                ...state,
+                venue :venue1
+            } 
+            case "ASIA":
+                const {venue2} = action
+                return{
+                ...state,
+                venue :venue2
+            } 
+            case "EUROPE":
+                const {venue3} = action
+                return{
+                ...state,
+                venue :venue3
+            } 
+                    
         default:{
             return state
         }

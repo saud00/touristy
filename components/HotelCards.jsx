@@ -157,7 +157,7 @@ function HotelCards({val}) {
             <div className={classes.span2} style={{width:mobile? "100%":"50%"}}>
                 <div style={{color:"grey", letterSpacing:"0.2rem"}}>{val.location}</div>
                 <div>{val.name}</div>
-                <div style={{margin:"1rem 0"}}>Type: &nbsp;&nbsp;&nbsp;&nbsp; {val.quality}
+                <div style={{margin:"1rem 0"}}>Region: &nbsp;&nbsp;&nbsp;&nbsp; {val.region}
                 </div>
 
                 <div style={{position:"absolute",bottom:"0vh", right:"1vw"}}>
