@@ -60,7 +60,7 @@ function Nav() {
                     <Link href="/offers">Offers</Link>
                 </li>
                 <li style={{display: scroll>150? "inline": "none"}}>
-                    <Link href="Forms"><a> <Chip icon={<Avatar><FaUser/></Avatar>} ></Chip> </a></Link>
+                    <Link href="/Forms"><a> <Chip icon={<Avatar><FaUser/></Avatar>} ></Chip> </a></Link>
                 </li>
             </ul>
           </div>

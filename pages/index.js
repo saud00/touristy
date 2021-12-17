@@ -48,13 +48,10 @@ export default function Home() {
       {//hero img
       }
 
-      {/* <div  className={classes.hero}> */}
        <Box className={classes.img}>
        {/* <Image width={100} height={100} layout="fill" alt="nothing" src="/img/bg2.jpg" priority /> */}
        <img src="/img/bg3.png" className={classes.fit} alt="img" />
        </Box>
-       {/* <Typography sx={{...heading}}> Helping you find and book the world’s best boutique and luxury hotels </Typography> */}
-      {/* </div> */}
 
       {//checkIn form
       }

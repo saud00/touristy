@@ -105,7 +105,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   }));
 
 function HotelCards({val}) {
-    const {price} = val;
+    const {price, id} = val;
     const discount = val.discount()
     const dispatch = useDispatch()
     const [count,setCount]= useState(1)
@@ -117,7 +117,6 @@ function HotelCards({val}) {
             type:"INC",
             payload:{rooms, discount}
         });
-        alert("i am here")
     }
     const minus=()=>{setRooms((prevRooms)=>(prevRooms<=2? 2: prevRooms-1))}
 
@@ -178,7 +177,8 @@ function HotelCards({val}) {
                     <Typography>${val.discount()}</Typography>
                 </div>
                 <div className={classes.rightEnd}>
-                    <SvgButton variant="contained">Visit</SvgButton>
+                  <Link href="Hotels/[id]" as={`Hotels/${id}`} ><a><SvgButton variant="contained">Visit</SvgButton></a></Link>
+                    
                 </div>
                 </div>
 
