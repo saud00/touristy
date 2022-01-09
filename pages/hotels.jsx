@@ -30,6 +30,8 @@ const styles = makeStyles({
     }
 })
 
+
+
 function Hotels() {
     const dispatch = useDispatch()
     const classes = styles()

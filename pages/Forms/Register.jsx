@@ -1,17 +1,18 @@
-import { withFormik , Form , Field} from 'formik'
+import { withFormik , Form , Field, ErrorMessage} from 'formik'
 import React from 'react'
 import { FormControl, Paper, Typography, Button, Box, useMediaQuery } from '@mui/material';
 import {TextField} from 'formik-mui'
 import { textAlign } from '@mui/system';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineUser,HiOutlineMail } from "react-icons/hi";
-
+import * as Yup from 'yup';
 import { makeStyles } from '@mui/styles'; 
+import { useRouter } from 'next/router'
 
 const styles = makeStyles({
     cssOutlinedInput: {
         '&$cssFocused $notchedOutline': {
-          borderColor: `white !important`,
+          borderColor: `white`,
         }
       },
       cssFocused: {},
@@ -25,14 +26,14 @@ const styles = makeStyles({
       },
 })
 
-const Login=({values, setNewUser})=>{
+const Login=({values, setNewUser, errors, touched, isValid, isSubmitting, dirty})=>{
     const mobile = useMediaQuery('(max-width:600px)')
     const classes = styles()
-    console.log('Register')
+    const router = useRouter()
     return(
         <Box sx={{backgroundImage:`url(${"/img/form-bg.jpeg"})`, backgroundPosition:"center", backgroundSize:"cover", backgroundRepeat:"no-repeat", p:2 , color:"#b6a288" }}>
 
-        <Form>
+        <Form method='POST'>
             <Paper elevation={8} sx={{m:"5vh auto", display:"block", width:mobile?"100%": "50%", textAlign:"center", color:"white", backgroundColor:"transparent"}}>
             <FormControl sx={{color:"white"}}>
 
@@ -54,28 +55,66 @@ const Login=({values, setNewUser})=>{
                                 focused: classes.cssFocused,
                             },
                         }}
-                          component={TextField} name="text" label="First Name" type="text" autofocus/>
+                        component={TextField} name="name" label="First Name" type="text" autoFocus/>
                 </Box>
-                    
+                {/* <ErrorMessage name="username" /> */}
 
                 <Box margin={1} sx={{display:"inline-flex", alignItems:"center",background: `rgba(0, 0, 0, .2)`,}}>
                         <Box sx={{p:"1vw"}}>  <HiOutlineMail size={40}/></Box> 
                    
                     <Field sx={{input: { color: 'white'} }}  InputProps={{
                         classes: {
-                        root: classes.cssOutlinedInput,
-                        focused: classes.cssFocused,
-                        notchedOutline: classes.notchedOutline,
+                            root: classes.cssOutlinedInput,
+                            focused: classes.cssFocused,
+                            notchedOutline: classes.notchedOutline,
                         },}} InputLabelProps={{
                             classes: {
-                              root: classes.cssLabel,
-                              focused: classes.cssFocused,
+                                root: classes.cssLabel,
+                                focused: classes.cssFocused,
                             },
-                          }}
-                          component={TextField} name="email" label="Email" type="email" />
+                        }}
+                        component={TextField} name="email" label="Email" type="email" />
                 </Box>
+                {/* <ErrorMessage name="email" /> */}
+                <Box margin={1} sx={{display:"inline-flex", alignItems:"center",background: `rgba(0, 0, 0, .2)`,}}>
+                        <Box sx={{p:"1vw"}}>  <HiOutlineMail size={40}/></Box> 
+                   
+                    <Field sx={{input: { color: 'white'} }}  InputProps={{
+                        classes: {
+                            root: classes.cssOutlinedInput,
+                            focused: classes.cssFocused,
+                            notchedOutline: classes.notchedOutline,
+                        },}} InputLabelProps={{
+                            classes: {
+                                root: classes.cssLabel,
+                                focused: classes.cssFocused,
+                            },
+                        }}
+                        component={TextField} name="phone" label="Phone" />
+                </Box>
+                {/* <ErrorMessage name="email" /> */}
+
+          {/* <div style={{color:"red"}}>{touched.password && errors.password}</div> */}
+                <Box margin={1} sx={{display:"inline-flex", alignItems:"center",background: `rgba(0, 0, 0, .2)`,}}>
                     
+                    <Box sx={{p:"1vw"}}>  <RiLockPasswordLine size={40}/></Box> 
+                   
+                    <Field sx={{input: { color: 'white'} }}  InputProps={{
+                        classes: {
+                            root: classes.cssOutlinedInput,
+                            focused: classes.cssFocused,
+                            notchedOutline: classes.notchedOutline,
+                        },}} InputLabelProps={{
+                            classes: {
+                                root: classes.cssLabel,
+                                focused: classes.cssFocused,
+                            },
+                        }}
+                        component={TextField} name="password" label="Password" color="info" type="password" />
+                </Box>
+                {/* <ErrorMessage name="email" /> */}
 
+                {/* {values.cPassword != values.password && touched.cPassword && <p color="red">Please Re-enter correct Password</p> } */}
                 <Box margin={1} sx={{display:"inline-flex", alignItems:"center",background: `rgba(0, 0, 0, .2)`,}}>
                     <Box sx={{p:"1vw"}}>  <RiLockPasswordLine size={40}/></Box> 
                    
@@ -90,27 +129,10 @@ const Login=({values, setNewUser})=>{
                               focused: classes.cssFocused,
                             },
                           }}
-                        component={TextField} name="Password" label="Password" color="info" type="password" />
+                        component={TextField} name="cPassword" label="Confirm Password" color="info" type="password" />
                 </Box>
 
-                <Box margin={1} sx={{display:"inline-flex", alignItems:"center",background: `rgba(0, 0, 0, .2)`,}}>
-                    <Box sx={{p:"1vw"}}>  <RiLockPasswordLine size={40}/></Box> 
-                   
-                    <Field sx={{input: { color: 'white'} }}  InputProps={{
-                        classes: {
-                        root: classes.cssOutlinedInput,
-                        focused: classes.cssFocused,
-                        notchedOutline: classes.notchedOutline,
-                        },}} InputLabelProps={{
-                            classes: {
-                              root: classes.cssLabel,
-                              focused: classes.cssFocused,
-                            },
-                          }}
-                        component={TextField} name="Password" label="Confirm Password" color="info" type="password" />
-                </Box>
-
-                <Paper elevation={8} sx={{backgroundColor:"inherit",my:"2rem"}} ><Button sx={{backgroundColor:"#778b9f",  width:"50%", "&:hover":{color:"white"} }}  color="inherit"> Submit</Button></Paper>
+                <Paper elevation={8} sx={{backgroundColor:"inherit",my:"2rem"}} ><Button type="submit" sx={{backgroundColor:"#778b9f",  width:"50%", "&:hover":{color:"white"} }} disabled={isSubmitting || !isValid || !dirty} color="inherit"> Submit</Button></Paper>
 
                 <Box><Typography>Already a User? <u onClick={()=>{setNewUser(false)}} style={{color:"#F7991C",cursor:"pointer"}}> SignIn here</u></Typography></Box>
            
@@ -122,12 +144,45 @@ const Login=({values, setNewUser})=>{
 }
 
 const FormikApp = withFormik({
-    mapPropsToValues({username, email, password}){
+    mapPropsToValues({name, email, phone, password, cPassword}){
         return{
-            username: username || " ", email : email || " ", password : password || " "
+            name: name || "", email : email || "", password : password || "", cPassword : cPassword || "", phone:phone||""
         }
     },
-    handleSubmit(){}
+    async handleSubmit(values,{props}){
+        // e.preventDefault()
+        const {name, email, password, phone, cPassword } = values;
+
+        const res = await fetch('/reg', {
+            method:"POST",
+            headers:{
+                'Content-Type':"application/json"
+            },
+            body: JSON.stringify({name, email, phone, password,  cPassword })
+        })
+        const data = await res.json()
+        console.log(data)
+        
+        if(data.status==200){
+            console.log(data.status)
+            window.alert(data.message)
+            props.setNewUser(false)
+        }else{
+            console.log(data.status)
+            window.alert(data.err)
+        }
+        // setTimeout(() => {
+        //     setSubmitting(true)
+        //     // setStatus('Registered')
+        // }, 1000);
+    },
+
+    validationSchema: Yup.object().shape({
+        email: Yup.string().email("Enter valid Email Address").required(),
+        name: Yup.string().required("Username is mandatory"),
+        password: Yup.string().required("password required").min(8, "Weak Password"),
+        cPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
+    })
 })(Login)
 
 export default function Register({setNewUser}) {

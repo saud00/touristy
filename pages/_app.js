@@ -5,7 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import '@natscale/react-calendar/dist/main.css';
 import Footer from '../components/Footer';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider} from 'react-redux';
+import { SessionProvider as AuthProvider} from "next-auth/react"
 import store from '../components/store/index'
 
   function MyApp({ Component, pageProps }) {
@@ -19,11 +20,13 @@ import store from '../components/store/index'
   }, []);
   // AOS.init()
   return(
-    <Provider store={store}>
-    <Nav/>
-    <Component {...pageProps} />
-    <Footer/>
-    </Provider>
+    <AuthProvider session={pageProps.session}>
+      <ReduxProvider store={store}>
+        <Nav/>
+          <Component {...pageProps} />
+        <Footer/>
+      </ReduxProvider>
+    </AuthProvider>
   ) 
 }
 

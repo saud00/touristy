@@ -2,12 +2,12 @@ import { withFormik , Form , Field} from 'formik'
 import React from 'react'
 import { FormControl, Paper, Typography, Button, Box } from '@mui/material';
 import {TextField} from 'formik-mui'
-import { textAlign } from '@mui/system';
-
+import * as Yup from "yup";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineUser,HiOutlineMail } from "react-icons/hi";
-
 import { makeStyles } from '@mui/styles'; 
+import { useRouter } from 'next/router';
+
 
 const styles = makeStyles({
     cssOutlinedInput: {
@@ -26,13 +26,16 @@ const styles = makeStyles({
       },
 })
 
-const Login=({values, setNewUser})=>{
+
+
+const Login=({values, errors, touched, setNewUser})=>{
     const classes = styles()
-    console.log('signIn')
+    console.log(errors)
+    const router = useRouter()
     return(
         <Box sx={{backgroundImage:`url(${"/img/form-bg.jpeg"})`, backgroundPosition:"center", backgroundSize:"cover", backgroundRepeat:"no-repeat", p:2 , color:"#b6a288" }}>
 
-        <Form>
+        <Form method='POST'>
             <Paper elevation={8} sx={{m:"0 auto", display:"block", width:"50%", textAlign:"center", color:"white", backgroundColor:"transparent"}}>
             <FormControl sx={{color:"white"}}>
 
@@ -58,25 +61,26 @@ const Login=({values, setNewUser})=>{
                           component={TextField} name="email" label="Email" type="email" />
                 </Box>
 
+                {errors.email && touched.emial && <Box><Typography variant="subtitle1">{errors.email}</Typography></Box>}
                 <Box margin={1} sx={{display:"inline-flex", alignItems:"center",background: `rgba(0, 0, 0, .2)`,}}>
                     <Box sx={{p:"1vw"}}>  <RiLockPasswordLine size={40}/></Box> 
                    
                     <Field sx={{input: { color: 'white'} }}  InputProps={{
                         classes: {
-                        root: classes.cssOutlinedInput,
-                        focused: classes.cssFocused,
-                        notchedOutline: classes.notchedOutline,
+                            root: classes.cssOutlinedInput,
+                            focused: classes.cssFocused,
+                            notchedOutline: classes.notchedOutline,
                         },}} InputLabelProps={{
                             classes: {
-                              root: classes.cssLabel,
-                              focused: classes.cssFocused,
+                                root: classes.cssLabel,
+                                focused: classes.cssFocused,
                             },
-                          }}
-                        component={TextField} name="Password" label="Password" color="info" type="password" />
+                        }}
+                        component={TextField} name="password" label="Password"  type="password" />
                 </Box>
 
 
-                <Paper elevation={8} sx={{backgroundColor:"inherit",my:"2rem"}} ><Button sx={{backgroundColor:"#778b9f",  width:"50%", "&:hover":{color:"white"} }}  color="inherit"> Submit</Button></Paper>
+                <Paper elevation={8} sx={{backgroundColor:"inherit",my:"2rem"}} ><Button type="submit" sx={{backgroundColor:"#778b9f",  width:"50%", "&:hover":{color:"white"} }}  color="inherit"> Submit</Button></Paper>
 
                 <Box><Typography>New User? <u onClick={()=>{setNewUser(true)}} style={{color:"#F7991C", cursor:"pointer"}}> Register here</u></Typography></Box>
            
@@ -90,10 +94,34 @@ const Login=({values, setNewUser})=>{
 const FormikApp = withFormik({
     mapPropsToValues({ email, password}){
         return{
-            email : email || " ", password : password || " "
+            email : email || "", password : password || ""
         }
     },
-    handleSubmit(){}
+    validationSchema: Yup.object().shape({
+        email: Yup.string().email("Enter valid Email").required("Email is required"),
+        password: Yup.string().required("Password is required").min(8),
+    }),
+    async handleSubmit(values){
+        console.log(values)
+        const {email, password} = values
+        const res = await fetch('/login',{
+            method:"POST",
+            headers:{
+            "Content-Type":"application/json",
+        },
+        body: JSON.stringify({ email, password})
+        })
+        const data = await res.json()
+        console.log(data)
+
+        if(data.status==200){
+            window.alert(data.message)
+            router.push('/')
+        }else{
+
+            window.alert(data.error)
+        }
+    }
 })(Login)
 
 export default function Signin({setNewUser}) {

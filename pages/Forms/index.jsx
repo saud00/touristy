@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import Signin from './Signin'
 import Register from './Register'
+// import {signIn, signOut, useSession} from 'next-auth/client'
 
 function Index() {
     const [newUser, setNewUser] = useState(false)
     return (
         <div>
-            {newUser? <Register setNewUser={setNewUser}/> : <Signin setNewUser={setNewUser} /> }
+            {newUser? <Register setNewUser={setNewUser}  /> : <Signin setNewUser={setNewUser} /> }
         </div>
     )
 }
