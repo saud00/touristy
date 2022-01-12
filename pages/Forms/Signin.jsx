@@ -7,6 +7,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineUser,HiOutlineMail } from "react-icons/hi";
 import { makeStyles } from '@mui/styles'; 
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 
 const styles = makeStyles({
@@ -31,7 +32,6 @@ const styles = makeStyles({
 const Login=({values, errors, touched, setNewUser})=>{
     const classes = styles()
     console.log(errors)
-    const router = useRouter()
     return(
         <Box sx={{backgroundImage:`url(${"/img/form-bg.jpeg"})`, backgroundPosition:"center", backgroundSize:"cover", backgroundRepeat:"no-repeat", p:2 , color:"#b6a288" }}>
 
@@ -101,8 +101,8 @@ const FormikApp = withFormik({
         email: Yup.string().email("Enter valid Email").required("Email is required"),
         password: Yup.string().required("Password is required").min(8),
     }),
-    async handleSubmit(values){
-        console.log(values)
+    async handleSubmit(values,{props}){
+    console.log(values)
         const {email, password} = values
         const res = await fetch('/login',{
             method:"POST",
@@ -115,8 +115,8 @@ const FormikApp = withFormik({
         console.log(data)
 
         if(data.status==200){
+            props.setIsUser(true)
             window.alert(data.message)
-            router.push('/')
         }else{
 
             window.alert(data.error)
@@ -124,6 +124,7 @@ const FormikApp = withFormik({
     }
 })(Login)
 
-export default function Signin({setNewUser}) {
-    return <FormikApp setNewUser={setNewUser} />
+export default function Signin({setNewUser, setIsUser}) {
+
+    return <FormikApp setNewUser={setNewUser} setIsUser={setIsUser} />
 }

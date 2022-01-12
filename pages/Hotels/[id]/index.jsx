@@ -6,6 +6,7 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 import { Button, useMediaQuery, Typography, Paper } from '@mui/material';
 import Steppers from '../../../components/hotel/Stepper';
 import BasicDateRangePicker from '../../../components/home/Calender';
+import Comments from '../../../components/hotel/Comments';
 
 const styles=makeStyles({
   detailsLeft:{
@@ -107,6 +108,7 @@ function Index() {
                     <Typography textAlign="center" color="white">CONFRIM NOW</Typography> 
                 </div>
             </Paper>
+            <Comments/>
         </div>
     )
 }

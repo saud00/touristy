@@ -114,7 +114,8 @@ const initialState = {
           }
     ],
     days : 0,
-    venue:[]
+    venue:[],
+    isUser :false
 
 };
 
@@ -152,6 +153,12 @@ function HotelReducers(state = initialState, action){
                 ...state,
                 venue :venue3
             } 
+
+            case "IS_USER":
+                const {isuser} = action.payload
+                return{
+                    isUser : isuser
+                }
                     
         default:{
             return state

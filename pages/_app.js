@@ -20,13 +20,13 @@ import store from '../components/store/index'
   }, []);
   // AOS.init()
   return(
-    <AuthProvider session={pageProps.session}>
+    // <AuthProvider session={pageProps.session}>
       <ReduxProvider store={store}>
         <Nav/>
           <Component {...pageProps} />
         <Footer/>
       </ReduxProvider>
-    </AuthProvider>
+    // </AuthProvider>
   ) 
 }
 
