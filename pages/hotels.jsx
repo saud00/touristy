@@ -37,7 +37,7 @@ function Hotels() {
     const classes = styles()
     const [changeSort, setChangeSort] = useState(false)
     const [anchorEl, setAnchorEl] = React.useState(null);
-    var {venues, venue} = useSelector((state) => state.HotelReducers)
+    const {venues, venue} = useSelector(state => state.HotelReducers)
 
     const changeVenues=(e)=>{
         const eId = e.target.id

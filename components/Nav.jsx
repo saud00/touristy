@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/Image"
+import Image from "next/image"
 import {useState, useEffect} from "react"
 import styles from "../styles/nav.module.css"
 import { FaPhoneAlt,FaBars,FaUser } from "react-icons/fa";
